@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    ons.bootstrap()
+      .controller('AppController', function() {
+        this.pushes = 0;
+        this.pops = 0;
+      });
+    ons.ready(function() {
+        console.log("Onsen UI is ready!");
+    });
+  </script>
+</head>
+<body>
+  <ons-navigator
+    var="navi"
+    page="page.html"
+    ng-controller="AppController as app"
+    ons-postpush="app.pushes = app.pushes + 1"
+    ons-postpop="app.pops = app.pops + 1">
+  </ons-navigator>
+
+  <ons-template id="page.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">Navigation</div>
+      </ons-toolbar>
+
+      <section style="padding: 10px">
+        <ons-button ng-click="navi.pushPage('page.html')">
+          Push Page
+        </ons-button>
+
+        <p>
+          You have pushed {{ app.pushes }} times and popped {{ app.pops }} times.
+        </p>
+      </section>
+    </ons-page>
+  </ons-template>
+
+</body>
+</html>
