@@ -34,6 +34,9 @@
       </ons-toolbar>
 
       <section style="padding: 10px">
+        <div>
+          <ons-list-item ng-repeat="a in app.menus">{{a}}</ons-list-item>
+        </div>
         <ons-button ng-click="navi.pushPage('page.html')">
           Push Page
         </ons-button>
