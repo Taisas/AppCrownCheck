@@ -25,9 +25,9 @@
   <ons-template id="main.html">
     <ons-page>
       <ons-toolbar>
-        <div class="left">
-          <ons-back-button>Back</ons-back-button>
-        </div>
+        <!--<div class="left">-->
+          <!--<ons-back-button>Back</ons-back-button>-->
+        <!--</div>-->
         <div class="center">クラウンチェック</div>
       </ons-toolbar>
 
@@ -39,6 +39,7 @@
           <!--Push Page-->
         <!--</ons-button>-->
       </section>
+
     </ons-page>
   </ons-template>
 
@@ -52,7 +53,7 @@
       </ons-toolbar>
       <section style="padding: 10px">
         <div>
-          <ons-list-item ng-repeat="a in app.romans" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{a[0]}}</ons-list-item>
+          <ons-list-item ng-repeat="a in app.romans" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{$index+1}}代皇帝.{{a[0]}}</ons-list-item>
         </div>
       </section>
     </ons-page>
@@ -66,6 +67,11 @@
         </div>
         <div class="center">フランス王</div>
       </ons-toolbar>
+      <section style="padding: 10px">
+        <div>
+          <ons-list-item ng-repeat="a in app.francs" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{$index+1}}代王.{{a[0]}}</ons-list-item>
+        </div>
+      </section>
     </ons-page>
   </ons-template>
 
@@ -104,7 +110,6 @@
       </section>
     </ons-page>
   </ons-template>
-
   <script src="app.js"></script>
 </body>
 </html>
