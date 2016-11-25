@@ -18,35 +18,74 @@
 <body>
   <ons-navigator
     var="navi"
-    page="page.html"
+    page="main.html"
     ng-controller="AppController as app"
-    ons-postpush="app.pushes = app.pushes + 1"
-    ons-postpop="app.pops = app.pops + 1">
   </ons-navigator>
 
-  <ons-template id="page.html">
+  <ons-template id="main.html">
     <ons-page>
       <ons-toolbar>
         <div class="left">
           <ons-back-button>Back</ons-back-button>
         </div>
-        <div class="center">Navigation</div>
+        <div class="center">クラウンチェック</div>
       </ons-toolbar>
 
       <section style="padding: 10px">
         <div>
-          <ons-list-item ng-repeat="a in app.menus">{{a}}</ons-list-item>
+          <ons-list-item ng-repeat="a in app.menus" ng-click="app.pushCrownPage(a[1])" modifier="chevron tappable">{{a[0]}}</ons-list-item>
         </div>
-        <ons-button ng-click="navi.pushPage('page.html')">
-          Push Page
-        </ons-button>
-
-        <p>
-          You have pushed {{ app.pushes }} times and popped {{ app.pops }} times.
-        </p>
+        <!--<ons-button ng-click="navi.pushPage('main.html')">-->
+          <!--Push Page-->
+        <!--</ons-button>-->
       </section>
     </ons-page>
   </ons-template>
+
+  <ons-template id="a001.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">ローマ皇帝</div>
+      </ons-toolbar>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a002.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">フランス王</div>
+      </ons-toolbar>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a003.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">イングランド王</div>
+      </ons-toolbar>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a004.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">神聖ローマ帝国皇帝</div>
+      </ons-toolbar>
+    </ons-page>
+  </ons-template>
+
   <script src="app.js"></script>
 </body>
 </html>
