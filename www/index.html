@@ -16,37 +16,100 @@
 
 </head>
 <body>
-  <ons-navigator
-    var="navi"
-    page="page.html"
-    ng-controller="AppController as app"
-    ons-postpush="app.pushes = app.pushes + 1"
-    ons-postpop="app.pops = app.pops + 1">
-  </ons-navigator>
+<ons-navigator
+        var="navi"
+        page="main.html"
+        ng-controller="AppController as app"
+</ons-navigator>
 
-  <ons-template id="page.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left">
-          <ons-back-button>Back</ons-back-button>
-        </div>
-        <div class="center">Navigation</div>
-      </ons-toolbar>
+<ons-template id="main.html">
+  <ons-page>
+    <ons-toolbar style="background-color: #cccc00">
+      <!--<div class="left">-->
+      <!--<ons-back-button>Back</ons-back-button>-->
+      <!--</div>-->
+      <div class="center"><img src="imges/crown_home_title.png" height="100%"></div>
+    </ons-toolbar>
 
-      <section style="padding: 10px">
-        <div>
-          <ons-list-item ng-repeat="a in app.menus">{{a}}</ons-list-item>
-        </div>
-        <ons-button ng-click="navi.pushPage('page.html')">
-          Push Page
-        </ons-button>
+    <section style="padding: 10px">
+      <div>
+        <ons-list-item ng-repeat="a in app.menus" ng-click="app.pushCrownPage(a[1])" modifier="chevron tappable">{{a[0]}}</ons-list-item>
+      </div>
+      <!--<ons-button ng-click="navi.pushPage('main.html')">-->
+      <!--Push Page-->
+      <!--</ons-button>-->
+    </section>
 
-        <p>
-          You have pushed {{ app.pushes }} times and popped {{ app.pops }} times.
-        </p>
-      </section>
-    </ons-page>
-  </ons-template>
-  <script src="app.js"></script>
+  </ons-page>
+</ons-template>
+
+<ons-template id="a001.html">
+  <ons-page>
+    <ons-toolbar style="background-color: #9d0c12">
+      <div class="left">
+        <ons-back-button></ons-back-button>
+      </div>
+      <div class="center"><img src="imges/crown_roma_title.png" height="100%"></div>
+    </ons-toolbar>
+    <section style="padding: 10px">
+      <div>
+        <ons-list-item ng-repeat="a in app.romans" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{$index+1}}代皇帝.{{a[0]}}</ons-list-item>
+      </div>
+    </section>
+  </ons-page>
+</ons-template>
+
+<ons-template id="a002.html">
+  <ons-page>
+    <ons-toolbar style="background-color: #000099">
+      <div class="left">
+        <ons-back-button></ons-back-button>
+      </div>
+      <div class="center"><img src="imges/crown_france_title.png" height="100%"></div>
+    </ons-toolbar>
+    <section style="padding: 10px">
+      <div>
+        <ons-list-item ng-repeat="a in app.francs" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{$index+1}}代王.{{a[0]}}</ons-list-item>
+      </div>
+    </section>
+  </ons-page>
+</ons-template>
+
+<ons-template id="a003.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-back-button>Back</ons-back-button>
+      </div>
+      <div class="center">イングランド王</div>
+    </ons-toolbar>
+  </ons-page>
+</ons-template>
+
+<ons-template id="a004.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-back-button>Back</ons-back-button>
+      </div>
+      <div class="center">神聖ローマ帝国皇帝</div>
+    </ons-toolbar>
+  </ons-page>
+</ons-template>
+
+<ons-template id="detail.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-back-button>Back</ons-back-button>
+      </div>
+      <div class="center">{{app.name}}</div>
+    </ons-toolbar>
+    <section style="padding: 10px">
+      {{app.exp}}
+    </section>
+  </ons-page>
+</ons-template>
+<script src="app.js"></script>
 </body>
 </html>
