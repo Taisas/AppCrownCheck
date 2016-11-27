@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 <ons-navigator
         var="navi"
         page="main.html"
@@ -111,5 +112,102 @@
   </ons-page>
 </ons-template>
 <script src="app.js"></script>
+=======
+  <ons-navigator
+    var="navi"
+    page="main.html"
+    ng-controller="AppController as app"
+  </ons-navigator>
+
+  <ons-template id="main.html">
+    <ons-page>
+      <ons-toolbar>
+        <!--<div class="left">-->
+          <!--<ons-back-button>Back</ons-back-button>-->
+        <!--</div>-->
+        <div class="center">クラウンチェック</div>
+      </ons-toolbar>
+
+      <section style="padding: 10px">
+        <div>
+          <ons-list-item ng-repeat="a in app.menus" ng-click="app.pushCrownPage(a[1])" modifier="chevron tappable">{{a[0]}}</ons-list-item>
+        </div>
+        <!--<ons-button ng-click="navi.pushPage('main.html')">-->
+          <!--Push Page-->
+        <!--</ons-button>-->
+      </section>
+
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a001.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">ローマ皇帝</div>
+      </ons-toolbar>
+      <section style="padding: 10px">
+        <div>
+          <ons-list-item ng-repeat="a in app.romans" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{$index+1}}代皇帝.{{a[0]}}</ons-list-item>
+        </div>
+      </section>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a002.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">フランス王</div>
+      </ons-toolbar>
+      <section style="padding: 10px">
+        <div>
+          <ons-list-item ng-repeat="a in app.francs" ng-click="app.showDedtail(a[0], a[1])" modifier="chevron tappable">{{$index+1}}代王.{{a[0]}}</ons-list-item>
+        </div>
+      </section>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a003.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">イングランド王</div>
+      </ons-toolbar>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="a004.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">神聖ローマ帝国皇帝</div>
+      </ons-toolbar>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="detail.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">{{app.name}}</div>
+      </ons-toolbar>
+      <section style="padding: 10px">
+        {{app.exp}}
+      </section>
+    </ons-page>
+  </ons-template>
+  <script src="app.js"></script>
+>>>>>>> 0db490cdbc29cf6a96ff7cb11635dbb8dbaa8912
 </body>
 </html>
