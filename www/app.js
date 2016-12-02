@@ -14,15 +14,19 @@ ons.bootstrap()
         };
     })
     .controller('AppController', function($scope, JsonData) {
-        this.name;
-        this.exp;
+        this.name = '';
+        this.exp = '';
         $scope.menus = [];
         $scope.romans = [];
         $scope.francs = [];
+        $scope.englands = [];
+        $scope.holyromans = [];
         JsonData.getJson().then(function(res){
             $scope.menus = res.data.menus;
             $scope.romans = res.data.roma;
             $scope.francs = res.data.france;
+            $scope.englands = res.data.england;
+            $scope.holyromans = res.data.holyroma;
         });
         this.pushCrownPage = function (id) {
             navi.pushPage(id + '.html', { animation: "slide" });
