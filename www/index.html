@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -8,18 +8,19 @@
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body ng-controller="AppController">
 <ons-navigator
         var="navi"
         page="main.html"
-        ng-controller="AppController as app"
 </ons-navigator>
 
 <ons-template id="main.html">
@@ -32,14 +33,24 @@
     </ons-toolbar>
 
     <section style="padding: 10px">
+      <form class="form-inline">
+        <div class="form-group">
+          <input type="text" id="keywd" ng-model="keywd"
+                 typeahead="keywd for keywd in names | filter:$viewValue | limitTo: 7" class="form-control"/>
+          <button class="btn btn-primary" ng-click="rexserch(keywd)"><ons-icon icon="ion-search" size="20px"></button>
+        </div>
+        <!--<p>{{keywd}}</p>-->
+      </form>
+    </section>
+
+    <section style="padding: 10px">
       <div>
-        <ons-list-item ng-repeat="a in menus" ng-click="app.pushCrownPage(a.id)" modifier="chevron tappable">{{a.name}}</ons-list-item>
+        <ons-list-item ng-repeat="a in menus" ng-click="pushCrownPage(a.id)" modifier="chevron tappable">{{a.name}}</ons-list-item>
       </div>
       <!--<ons-button ng-click="navi.pushPage('main.html')">-->
       <!--Push Page-->
       <!--</ons-button>-->
     </section>
-
   </ons-page>
 </ons-template>
 
@@ -53,7 +64,7 @@
     </ons-toolbar>
     <section style="padding: 10px">
       <div>
-        <ons-list-item ng-repeat="a in romans" ng-click="app.showDedtail(a.name, a.exp)" modifier="chevron tappable">{{$index+1}}代皇帝.{{a.name}}</ons-list-item>
+        <ons-list-item ng-repeat="a in romans" ng-click="showDedtail(a.name, a.exp)" modifier="chevron tappable">{{$index+1}}代皇帝.{{a.name}}</ons-list-item>
       </div>
     </section>
   </ons-page>
@@ -69,7 +80,7 @@
     </ons-toolbar>
     <section style="padding: 10px">
       <div>
-        <ons-list-item ng-repeat="a in francs" ng-click="app.showDedtail(a.name, a.exp)" modifier="chevron tappable">{{$index+1}}代王.{{a.name}}</ons-list-item>
+        <ons-list-item ng-repeat="a in francs" ng-click="showDedtail(a.name, a.exp)" modifier="chevron tappable">{{$index+1}}代王.{{a.name}}</ons-list-item>
       </div>
     </section>
   </ons-page>
@@ -85,7 +96,7 @@
     </ons-toolbar>
     <section style="padding: 10px">
       <div>
-        <ons-list-item ng-repeat="a in englands" ng-click="app.showDedtail(a.name, a.exp)" modifier="chevron tappable">{{a.name}}</ons-list-item>
+        <ons-list-item ng-repeat="a in englands" ng-click="showDedtail(a.name, a.exp)" modifier="chevron tappable">{{a.name}}</ons-list-item>
       </div>
     </section>
   </ons-page>
@@ -101,7 +112,7 @@
     </ons-toolbar>
     <section style="padding: 10px">
       <div>
-        <ons-list-item ng-repeat="a in holyromans" ng-click="app.showDedtail(a.name, a.exp)" modifier="chevron tappable">{{a.name}}</ons-list-item>
+        <ons-list-item ng-repeat="a in holyromans" ng-click="showDedtail(a.name, a.exp)" modifier="chevron tappable">{{a.name}}</ons-list-item>
       </div>
     </section>
   </ons-page>
@@ -113,10 +124,10 @@
       <div class="left">
         <ons-back-button></ons-back-button>
       </div>
-      <div class="center">{{app.name}}</div>
+      <div class="center">{{name}}</div>
     </ons-toolbar>
     <section style="padding: 10px">
-      {{app.exp}}
+      {{exp}}
     </section>
   </ons-page>
 </ons-template>
