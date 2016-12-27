@@ -34,9 +34,9 @@
 
     <section style="padding: 10px">
       <form class="form-inline">
-        <div class="form-group">
-          <input type="text" id="keywd" ng-model="keywd"
-                 typeahead="keywd for keywd in names | filter:$viewValue | limitTo: 7" class="form-control"/>
+        <div class="form-group container">
+          <input type="text" id="keywd" style="width: 200px;" ng-model="keywd"
+                 typeahead="keywd for keywd in names | filter:$viewValue | limitTo: 7"/>
           <button class="btn btn-primary" ng-click="rexserch(keywd)"><ons-icon icon="ion-search" size="20px"></button>
         </div>
         <!--<p>{{keywd}}</p>-->
@@ -58,7 +58,7 @@
   <ons-page>
     <ons-toolbar style="background-color: #9d0c12">
       <div class="left">
-        <ons-back-button></ons-back-button>
+        <ons-back-button style="color:#FFFFFF"></ons-back-button>
       </div>
       <div class="center"><img src="imges/crown_roma_title.png" height="100%"></div>
     </ons-toolbar>
@@ -126,7 +126,7 @@
       </div>
       <div class="center">{{name}}</div>
     </ons-toolbar>
-    <section style="padding: 10px">
+    <section style="padding: 20px">
       {{exp}}
     </section>
   </ons-page>
